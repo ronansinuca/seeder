@@ -19,6 +19,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+#ifndef HAVE_STRLCPY
 /*
  * Copy src to string dst of size siz.  At most siz-1 characters
  * will be copied.  Always NUL terminates (unless siz == 0).
@@ -51,7 +53,9 @@ inline size_t strlcpy(char *dst, const char *src, size_t siz)
 
     return(s - src - 1); /* count does not include NUL */
 }
+#endif /* !HAVE_STRLCPY */
 
+#ifndef HAVE_STRLCAT
 /*
  * Appends src to string dst of size siz (unlike strncat, siz is the
  * full size of dst, not space left).  At most siz-1 characters
@@ -87,4 +91,5 @@ inline size_t strlcat(char *dst, const char *src, size_t siz)
 
     return(dlen + (s - src)); /* count does not include NUL */
 }
+#endif /* !HAVE_STRLCAT */
 #endif
